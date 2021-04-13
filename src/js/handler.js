@@ -1,7 +1,19 @@
 let win = 0;
 const winEl = document.querySelector('span.win');
+let fail = 0;
+const failEl = document.querySelector('span.fail');
 
-export default function handlerFactory(timer, timer2, fail, failEl) {
+let timer2 = setInterval((timer) => {
+  fail += 1;
+  failEl.textContent = fail;
+  if (fail === 5) {
+    clearInterval(timer);
+    clearInterval(timer2);
+    alert('Игра закончена. Вы проиграли');
+  }
+}, 1000);
+
+export default function handlerFactory(timer) {
   return (event) => {
     const cell = event.target.closest('.goblin');
     clearInterval(timer2); // если кликнули, то остановить отсчет времени
