@@ -1,6 +1,9 @@
 import getRandomIntInclusive from './getnumbers';
 
 export default function setGoblin() {
+  if (document.querySelector('.goblin')) {
+    document.querySelector('.goblin').classList.remove('goblin');
+  }
   const row = getRandomIntInclusive(1, 4);
   const column = getRandomIntInclusive(1, 4);
 
